@@ -1,0 +1,46 @@
+name: FakeplexCore
+author: ["Atticus Zambrana"]
+main: net.angusbeefgaming.mineplex.MineplexCore
+version: 1.0
+commands:
+  disguise:
+    description: Disguise as another player
+  undisguise:
+    description: Remove your current disguise
+  test:
+    description: Debug Command
+  updaterank:
+    description: Update Players Rank
+  networkkick:
+    description: Kick a Player from ANY Server
+  carlthecreeper:
+    description: Open Carl's Rewards
+  damage:
+    description: Toggle Player Damage
+  gm:
+    description: Change Player Game Mode
+  announce:
+    description: Network Wide Broadcast
+  s:
+    description: Mod Broadcast
+  disguise:
+    description: Disguise as another Player
+  prefs:
+    description: Open Prefrences Menu
+  panelopen:
+    description: Open a Panel
+  gem:
+    description: Give Players Gems
+  vanish:
+    aliases: ["v", "sv", "incognito", "supervanish"]
+    description: Become Invisible
+  silence:
+    aliases: ["mutechat"]
+    description: Silence Chat
+  report:
+    description: Report a Player for rule breaking
+  msg:
+    aliases: ["m", "message", "tell", "w", "whisper"]
+    description: Private Message a Player
+  socialspy:
+    description: Spy on player's messages
