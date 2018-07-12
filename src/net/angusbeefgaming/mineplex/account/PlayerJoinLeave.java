@@ -8,6 +8,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import net.angusbeefgaming.mineplex.MineplexCore;
+import net.angusbeefgaming.mineplex.server.ServerType;
 import net.angusbeefgaming.mineplex.settings.PrefsManager;
 import net.md_5.bungee.api.ChatColor;
 
@@ -15,7 +17,9 @@ public class PlayerJoinLeave implements Listener {
 	@EventHandler
 	public void playerJoin(PlayerJoinEvent event) {
 		event.setJoinMessage(ChatColor.DARK_GRAY + "Join> " + ChatColor.GRAY + event.getPlayer().getDisplayName());
-		event.getPlayer().teleport(new Location(event.getPlayer().getWorld(), 0, 78, -32));
+		if(!(MineplexCore.getInstance().myServerType == ServerType.KITPVP)) {
+			event.getPlayer().teleport(new Location(event.getPlayer().getWorld(), 0, 78, -32));
+		}
 		PrefsManager.user_pms.put(event.getPlayer(), true);
 		
 		UserManager.UserStore.put(event.getPlayer().getUniqueId(), new User(event.getPlayer()));

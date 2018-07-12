@@ -8,10 +8,17 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 
+import net.angusbeefgaming.mineplex.MineplexCore;
+import net.angusbeefgaming.mineplex.server.ServerType;
+
 public class DamageListener implements Listener {
 
 	@EventHandler
 	public void onDamage(EntityDamageEvent event) {
+		
+		if(MineplexCore.getInstance().myServerType == ServerType.KITPVP) {
+			return;
+		}
 		
 		if(event.getCause() == DamageCause.VOID) {
 			event.getEntity().teleport(new Location(event.getEntity().getWorld(), 0, 78, -32));

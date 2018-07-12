@@ -3,6 +3,8 @@ author: ["Atticus Zambrana"]
 main: net.angusbeefgaming.mineplex.MineplexCore
 version: 1.0
 commands:
+  closeserver:
+    description: Restart the server and move all players to the hub
   disguise:
     description: Disguise as another player
   undisguise:

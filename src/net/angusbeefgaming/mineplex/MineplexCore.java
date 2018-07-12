@@ -11,6 +11,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
+import com.google.common.collect.Iterables;
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
+
 import net.angusbeefgaming.mineplex.account.PlayerJoinLeave;
 import net.angusbeefgaming.mineplex.account.RankEvent;
 import net.angusbeefgaming.mineplex.account.UpdaterankCommand;
@@ -33,6 +37,8 @@ import net.angusbeefgaming.mineplex.gems.GemCommand;
 import net.angusbeefgaming.mineplex.pm.MessageCommand;
 import net.angusbeefgaming.mineplex.pm.SocialSpyCommand;
 import net.angusbeefgaming.mineplex.reports.ReportPlayerCommand;
+import net.angusbeefgaming.mineplex.server.CloseServerCommand;
+import net.angusbeefgaming.mineplex.server.ServerType;
 import net.angusbeefgaming.mineplex.settings.PrefrencesCommand;
 import net.angusbeefgaming.mineplex.settings.PrefrencesHandler;
 import net.angusbeefgaming.mineplex.signs.GemLookupSign;
@@ -45,10 +51,13 @@ public class MineplexCore extends JavaPlugin implements PluginMessageListener {
 	private static MineplexCore instance;
 	public static Map<String, String> rankStore = new HashMap<String, String>();
 	
+	public static ServerType myServerType;
+	
 	@Override
 	public void onEnable() {
 		instance = this;
 		
+		myServerType = ServerType.KITPVP;
 		
 		// Register Commands
 		getCommand("updaterank").setExecutor(new UpdaterankCommand());
@@ -68,6 +77,7 @@ public class MineplexCore extends JavaPlugin implements PluginMessageListener {
 		getCommand("announce").setExecutor(new AnnounceCommand());
 		getCommand("disguise").setExecutor(new DisguiseCommand());
 		getCommand("undisguise").setExecutor(new UndisguiseCommand());
+		getCommand("closeserver").setExecutor(new CloseServerCommand());
 		
 		// Register Events
 		getServer().getPluginManager().registerEvents(new RankEvent(), this);
@@ -114,6 +124,24 @@ public class MineplexCore extends JavaPlugin implements PluginMessageListener {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void sendAllHub() {
+		for(Player pla : Bukkit.getOnlinePlayers()) {
+			pla.sendMessage("" + ChatColor.GOLD + ChatColor.BOLD + "The Server you were on has been restarted by an Admin.");
+			
+			  ByteArrayDataOutput out = ByteStreams.newDataOutput();
+			  out.writeUTF("ConnectOther");
+			  out.writeUTF(pla.getName());
+			  out.writeUTF("Lobby-1");
+
+			  // If you don't care about the player
+			  // Player player = Iterables.getFirst(Bukkit.getOnlinePlayers(), null);
+			  // Else, specify them
+			  Player player = Iterables.getFirst(Bukkit.getOnlinePlayers(), null);
+
+			  player.sendPluginMessage(this, "BungeeCord", out.toByteArray());
+		}
 	}
 	
 	@Override
