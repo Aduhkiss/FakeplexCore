@@ -17,6 +17,8 @@ public class User {
 	private boolean isAuthed = false;
 	public String authCode;
 	
+	public boolean isVanished;
+	
 	public Pet spawnedPet;
 	
 	public User(Player _player) {
