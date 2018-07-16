@@ -4,7 +4,6 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
 import net.angusbeefgaming.mineplex.MineplexCore;
-import net.angusbeefgaming.mineplex.pets.Pet;
 import net.md_5.bungee.api.ChatColor;
 
 public class User {
@@ -19,7 +18,6 @@ public class User {
 	
 	public boolean isVanished;
 	
-	public Pet spawnedPet;
 	
 	public User(Player _player) {
 		this.player = _player;
@@ -62,11 +60,6 @@ public class User {
 	
 	public boolean isUserAuthed() {
 		return isAuthed;
-	}
-	
-	public void removePet() {
-		spawnedPet.despawnPet();
-		spawnedPet = null;
 	}
 
 }
