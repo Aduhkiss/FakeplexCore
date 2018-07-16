@@ -23,16 +23,10 @@ public class SilenceChat implements CommandExecutor {
 		}
 		
 		if(ChatManager.chatEnabled) {
-			ChatManager.silenceChat();
-			for(Player p : Bukkit.getOnlinePlayers()) {
-				p.sendMessage(ChatColor.BLUE + "Chat> " + ChatColor.GRAY + "Chat has been silenced by " + player.getDisplayName());
-			}
+			ChatManager.silenceChat(player);
 		}
 		else {
 			ChatManager.activateChat();
-			for(Player p : Bukkit.getOnlinePlayers()) {
-				p.sendMessage(ChatColor.BLUE + "Chat> " + ChatColor.GRAY + "Chat is no longer silenced.");
-			}
 		}
 		return true;
 	}
