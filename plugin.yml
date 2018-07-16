@@ -3,6 +3,8 @@ author: ["Atticus Zambrana"]
 main: net.angusbeefgaming.mineplex.MineplexCore
 version: 1.0
 commands:
+  gwenreport:
+    description: Manual GWEN Report to all staff
   closeserver:
     description: Restart the server and move all players to the hub
   disguise:

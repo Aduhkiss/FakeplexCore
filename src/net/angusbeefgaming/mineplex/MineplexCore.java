@@ -34,6 +34,7 @@ import net.angusbeefgaming.mineplex.damage.ToggleDamageCommand;
 import net.angusbeefgaming.mineplex.disguise.DisguiseCommand;
 import net.angusbeefgaming.mineplex.disguise.UndisguiseCommand;
 import net.angusbeefgaming.mineplex.gems.GemCommand;
+import net.angusbeefgaming.mineplex.gwen.ManualGwenAlertCommand;
 import net.angusbeefgaming.mineplex.pm.MessageCommand;
 import net.angusbeefgaming.mineplex.pm.SocialSpyCommand;
 import net.angusbeefgaming.mineplex.reports.ReportPlayerCommand;
@@ -65,6 +66,7 @@ public class MineplexCore extends JavaPlugin implements PluginMessageListener {
 		getCommand("damage").setExecutor(new ToggleDamageCommand());
 		getCommand("gm").setExecutor(new GameModeCommand());
 		getCommand("s").setExecutor(new SCommand());
+		getCommand("gwenreport").setExecutor(new ManualGwenAlertCommand());
 		getCommand("prefs").setExecutor(new PrefrencesCommand());
 		getCommand("panelopen").setExecutor(new OpenPanelCommand());
 		getCommand("gem").setExecutor(new GemCommand());

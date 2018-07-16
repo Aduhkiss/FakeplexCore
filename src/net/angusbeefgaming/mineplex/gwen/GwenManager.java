@@ -4,12 +4,13 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import net.angusbeefgaming.mineplex.common.Permissions;
+import net.angusbeefgaming.mineplex.common.Rank;
 import net.md_5.bungee.api.ChatColor;
 
 public class GwenManager {
 	public static void report(String name, String reason) {
 		for(Player p : Bukkit.getOnlinePlayers()) {
-			if(Permissions.isStaff(p)) {
+			if(Permissions.hasRank(p, Rank.TRAINEE)) {
 				int rand = (int) (Math.random() * 3);
 				if(rand == 0) {
 					p.sendMessage("" + ChatColor.AQUA + ChatColor.MAGIC + "A" + ChatColor.RESET + " " + ChatColor.RED + ChatColor.BOLD + "GWEN > " + ChatColor.GOLD + name + ChatColor.YELLOW + " suspected of " + ChatColor.GREEN + reason);
