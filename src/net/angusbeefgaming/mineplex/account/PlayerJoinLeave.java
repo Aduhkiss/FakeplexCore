@@ -22,7 +22,7 @@ public class PlayerJoinLeave implements Listener {
 		}
 		PrefsManager.user_pms.put(event.getPlayer(), true);
 		
-		UserManager.UserStore.put(event.getPlayer().getUniqueId(), new User(event.getPlayer()));
+		UserManager.userStore.add(new User(event.getPlayer()));
 		if(event.getPlayer().getGameMode() == GameMode.CREATIVE) {
 			event.getPlayer().setGameMode(GameMode.SURVIVAL);
 			event.getPlayer().sendMessage(ChatColor.BLUE + "Game Mode> " + ChatColor.GRAY + event.getPlayer().getDisplayName() + "'s Game Mode: " + ChatColor.RED + "False");
@@ -32,6 +32,5 @@ public class PlayerJoinLeave implements Listener {
 	@EventHandler
 	public void playerLeave(PlayerQuitEvent event) {
 		event.setQuitMessage(ChatColor.DARK_GRAY + "Quit> " + ChatColor.GRAY + event.getPlayer().getDisplayName());
-		UserManager.UserStore.put(event.getPlayer().getUniqueId(), null);
 	}
 }
