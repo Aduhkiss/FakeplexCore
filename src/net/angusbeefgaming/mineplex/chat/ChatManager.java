@@ -11,6 +11,9 @@ public class ChatManager {
 	public static void silenceChat(Player player) {
 		chatEnabled = false;
 		for(Player p : Bukkit.getOnlinePlayers()) {
+			if(player == Bukkit.getConsoleSender()) {
+				p.sendMessage(ChatColor.BLUE + "Chat> " + ChatColor.GRAY + "Chat has been silenced");
+			}
 			p.sendMessage(ChatColor.BLUE + "Chat> " + ChatColor.GRAY + "Chat has been silenced by " + ChatColor.GREEN + player.getDisplayName());
 		}
 	}

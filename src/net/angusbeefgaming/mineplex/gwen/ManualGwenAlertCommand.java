@@ -17,8 +17,8 @@ public class ManualGwenAlertCommand implements CommandExecutor {
 		Player player = (Player) sender;
 		if(!Permissions.hasRank(player, rankRequired)) Permissions.sendNoPermMessage(player, rankRequired);
 		
-		if(args.length > 1) {
-			if(args.length > 2) {
+		if(args.length < 1) {
+			if(args.length < 2) {
 				String vio = C.combineArray(args, 1);
 				GwenManager.report(args[0], vio);
 				return true;
