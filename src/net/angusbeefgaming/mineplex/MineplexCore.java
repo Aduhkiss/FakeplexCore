@@ -58,7 +58,7 @@ public class MineplexCore extends JavaPlugin implements PluginMessageListener {
 	public void onEnable() {
 		instance = this;
 		
-		myServerType = ServerType.KITPVP;
+		myServerType = ServerType.LOBBY;
 		
 		// Register Commands
 		getCommand("updaterank").setExecutor(new UpdaterankCommand());
