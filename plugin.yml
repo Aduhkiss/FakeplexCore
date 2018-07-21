@@ -3,6 +3,9 @@ author: ["Atticus Zambrana"]
 main: net.angusbeefgaming.mineplex.MineplexCore
 version: 1.0
 commands:
+  forcefield:
+    aliases: ["ff"]
+    description: Forcefield
   gwenreport:
     description: Manual GWEN Report to all staff
   closeserver:

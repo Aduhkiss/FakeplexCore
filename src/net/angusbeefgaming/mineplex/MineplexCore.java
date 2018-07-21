@@ -141,10 +141,7 @@ public class MineplexCore extends JavaPlugin implements PluginMessageListener {
 			  out.writeUTF("ConnectOther");
 			  out.writeUTF(pla.getName());
 			  out.writeUTF("Lobby-1");
-
-			  // If you don't care about the player
-			  // Player player = Iterables.getFirst(Bukkit.getOnlinePlayers(), null);
-			  // Else, specify them
+			  
 			  Player player = Iterables.getFirst(Bukkit.getOnlinePlayers(), null);
 
 			  player.sendPluginMessage(this, "BungeeCord", out.toByteArray());

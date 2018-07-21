@@ -1,13 +1,16 @@
 package net.angusbeefgaming.mineplex.forcefield;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.util.Vector;
 
 import net.angusbeefgaming.mineplex.Util.Maths;
+import net.angusbeefgaming.mineplex.Util.UtilAction;
+import net.angusbeefgaming.mineplex.Util.UtilAlg;
 
 public class EntityListener implements Listener {
 	/*
@@ -26,8 +29,12 @@ public class EntityListener implements Listener {
 			// Check if the Player is 5 blocks or closer
 			if(getDistance(e.getPlayer(), pla) <= 5) {
 				// Attempt to Knock0 them back
-				float knockback = 2f;
-				pla.setVelocity(e.getPlayer().getVelocity().add(e.getPlayer().getLocation().toVector().subtract(pla.getLocation().toVector()).normalize().multiply(knockback)));
+				Entity bottom = pla;
+				while (bottom.getVehicle() != null)
+					bottom = bottom.getVehicle();
+				
+				UtilAction.velocity(bottom, UtilAlg.getTrajectory2d(pla, bottom), 1.6, true, 0.8, 0, 10, true);
+				pla.getWorld().playSound(pla.getLocation(), Sound.ENTITY_CHICKEN_EGG, 2f, 0.5f);
 			}
 		}
 	}
