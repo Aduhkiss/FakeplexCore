@@ -4,7 +4,11 @@ import org.bukkit.entity.Player;
 import org.inventivetalent.nicknamer.api.NickNamerAPI;
 
 public class DisguiseManager {
-	// This Class is not being used yet because im lazy as hell
+	/*
+	 * Disguise Manager System
+	 * 
+	 * Created by Atticus Zambrana
+	 */
 	public static void nickPlayer(Player player, String target) {
 		NickNamerAPI.getNickManager().setNick(player.getUniqueId(), target);
 		NickNamerAPI.getNickManager().setSkin(player.getUniqueId(), target);

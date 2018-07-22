@@ -38,6 +38,7 @@ import net.angusbeefgaming.mineplex.gwen.ManualGwenAlertCommand;
 import net.angusbeefgaming.mineplex.pm.MessageCommand;
 import net.angusbeefgaming.mineplex.pm.SocialSpyCommand;
 import net.angusbeefgaming.mineplex.reports.ReportPlayerCommand;
+import net.angusbeefgaming.mineplex.scoreboard.ScoreboardManager;
 import net.angusbeefgaming.mineplex.server.CloseServerCommand;
 import net.angusbeefgaming.mineplex.server.ServerType;
 import net.angusbeefgaming.mineplex.settings.PrefrencesCommand;
@@ -89,6 +90,8 @@ public class MineplexCore extends JavaPlugin implements PluginMessageListener {
 		getServer().getPluginManager().registerEvents(new PrefrencesHandler(), this);
 		getServer().getPluginManager().registerEvents(new CarlListener(), this);
 		getServer().getPluginManager().registerEvents(new onChatEvent(), this);
+		
+		getServer().getPluginManager().registerEvents(new ScoreboardManager(), this);
 		
 		getServer().getPluginManager().registerEvents(new GemLookupSign(), this);
 		
