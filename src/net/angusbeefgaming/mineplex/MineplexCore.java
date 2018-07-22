@@ -33,8 +33,6 @@ import net.angusbeefgaming.mineplex.damage.DamageListener;
 import net.angusbeefgaming.mineplex.damage.ToggleDamageCommand;
 import net.angusbeefgaming.mineplex.disguise.DisguiseCommand;
 import net.angusbeefgaming.mineplex.disguise.UndisguiseCommand;
-import net.angusbeefgaming.mineplex.forcefield.EntityListener;
-import net.angusbeefgaming.mineplex.forcefield.ForcefieldCommand;
 import net.angusbeefgaming.mineplex.gems.GemCommand;
 import net.angusbeefgaming.mineplex.gwen.ManualGwenAlertCommand;
 import net.angusbeefgaming.mineplex.pm.MessageCommand;
@@ -82,7 +80,6 @@ public class MineplexCore extends JavaPlugin implements PluginMessageListener {
 		getCommand("disguise").setExecutor(new DisguiseCommand());
 		getCommand("undisguise").setExecutor(new UndisguiseCommand());
 		getCommand("closeserver").setExecutor(new CloseServerCommand());
-		getCommand("forcefield").setExecutor(new ForcefieldCommand());
 		
 		// Register Events
 		getServer().getPluginManager().registerEvents(new RankEvent(), this);
@@ -95,7 +92,6 @@ public class MineplexCore extends JavaPlugin implements PluginMessageListener {
 		
 		getServer().getPluginManager().registerEvents(new GemLookupSign(), this);
 		
-		getServer().getPluginManager().registerEvents(new EntityListener(), this);
 		
 		// Dont use this code. Its from the Broken Auth System
 		//getServer().getPluginManager().registerEvents(new AuthJoinListener(), this);
